@@ -6,6 +6,8 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
 } from 'firebase/auth';
 
 import {
@@ -61,7 +63,7 @@ export const createUserDocumentFromAuth = async (
                 ...additionalInformation
             });
         } catch (error) {
-            console.log('error creating the user', error.message);
+            console.error('error creating the user', error.message);
         }
         return userDocRef;
     }
@@ -78,3 +80,7 @@ export const signInUserWithAuthUserWithEmailAndPassword = async (email, password
 
     return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
