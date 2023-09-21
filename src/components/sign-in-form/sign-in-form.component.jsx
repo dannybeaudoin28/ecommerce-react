@@ -4,10 +4,10 @@ import './sign-in-form.styles.scss';
 
 import {
     signInWithGooglePopup,
-    createUserDocumentFromAuth,
     signInUserWithAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
+
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 const defaultFormFields = {
     email: '',
@@ -52,7 +52,7 @@ const SignInForm = () => {
                 <FormInput label="Password" type="password" onChange={handleChange} name="password" value={password} required />
                 <div className="buttons-container">
                     <Button type="sign-in" onClick={handleSubmit}>Sign In</Button>
-                    <Button type='button' buttonType='google' onClick={signInWithGoogle}>Google sign In</Button>
+                    <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>Google sign In</Button>
                 </div>
             </form>
         </div>

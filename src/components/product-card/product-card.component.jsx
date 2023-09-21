@@ -4,16 +4,13 @@ import { CartContext } from '../../contexts/cart.context';
 
 import './product-card.styles.scss';
 
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 const ProductCard = ({ product }) => {
     const { name, price, imageUrl } = product;
     const { addItemToCart } = useContext(CartContext);
 
-    const addProductToCart = () => {
-        console.log('inside addProductToCart')
-        addItemToCart(product);
-    };
+    const addProductToCart = () => addItemToCart(product);
 
     return (
         <div className='product-card-container'>
@@ -22,7 +19,7 @@ const ProductCard = ({ product }) => {
                 <span className='name'>{name}</span>
                 <span className='price'>{price}</span>
             </div>
-            <Button onClick={addProductToCart} buttonType='inverted'>Add To Cart</Button>
+            <Button onClick={addProductToCart} buttonType={BUTTON_TYPE_CLASSES.inverted}>Add To Cart</Button>
         </div>
     );
 };
